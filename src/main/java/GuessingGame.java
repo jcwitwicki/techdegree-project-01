@@ -1,7 +1,6 @@
-
 public class GuessingGame {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Prompter prompter = new Prompter();
         String nameItem = prompter.promptNameItem();
