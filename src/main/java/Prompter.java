@@ -1,8 +1,14 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+
+
 
 public class Prompter {
 
     Scanner sc = new Scanner(System.in);
+    private BufferedReader mReader = new BufferedReader(new InputStreamReader(System.in));
 
     private String nameItem;
     private int maxItems;
@@ -14,22 +20,46 @@ public class Prompter {
         return nameItem;
     }
 
-    public int promptMaxItems() {
+    public int promptMaxItems() throws IOException {
         System.out.println("What is the maximum amount of " + nameItem + " allowed in the jar:  ");
-        maxItems = sc.nextInt();
+        boolean loop = true;
+        while (loop) {
+            try {
+                maxItems = Integer.parseInt(mReader.readLine().trim());
+                loop = false;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Please try again:  ");
+            }
+        }
         return maxItems;
     }
 
-    public int gameOn(String nameItem, int maxItems) {
+    public int gameOn(String nameItem, int maxItems)throws IOException {
         System.out.print("Your goal is to guess how many " + nameItem + " are in the jar. Pick a number between 1 and " + maxItems + ". ");
         System.out.println("Please enter your guess:  ");
-        guess = sc.nextInt();
+        boolean loop = true;
+        while (loop) {
+            try {
+                guess = Integer.parseInt(mReader.readLine().trim());
+                loop = false;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Please try again:  ");
+            }
+        }
         return guess;
     }
 
-    public int tryAgain() {
+    public int tryAgain() throws Exception {
         System.out.println("Please try again:  ");
-        guess = sc.nextInt();
+        boolean loop = true;
+        while (loop) {
+            try {
+                guess = Integer.parseInt(mReader.readLine().trim());
+                loop = false;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Please try again:  ");
+            }
+        }
         return guess;
     }
 
