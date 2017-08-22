@@ -77,5 +77,5 @@ public class Prompter {
 
     public void result(int guessCount) {
         System.out.println("Yes! You got it in " + guessCount  + " attempt(s)!");
-    }
+    } 
 }
